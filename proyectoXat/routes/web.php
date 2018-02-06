@@ -19,4 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/denuncias.', 'HomeController@index')->name('home');
+Route::get('servicios/denuncias', 'proyectoXatController@getDenuncia');
+
+Route::get('servicios/debates', 'proyectoXatController@getDebates');
+
+Route::get('servicios/xat', 'proyectoXatController@getXat');
+
+Route::get('servicios/noticias', 'proyectoXatController@getNoticias');

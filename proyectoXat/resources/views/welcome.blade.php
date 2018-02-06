@@ -83,10 +83,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Xat</a>
-                    <a href="denuncias.blade.php">Denuncias</a>
-                    <a href="https://laravel-news.com">Debates</a>
-                    <a href="https://forge.laravel.com">Noticias</a>
+                    <a href="{{url('/servicios/xat')}}">Xat</a>
+                    <a href="{{url('/servicios/denuncias')}}">Denuncias</a>
+                    <a href="{{url('/servicios/debates')}}">Debates</a>
+                    <a href="{{url('/servicios/noticias')}}">Noticias</a>
                 </div>
             </div>
         </div>
