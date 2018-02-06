@@ -84,7 +84,7 @@
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Xat</a>
-                    <a href="https://laracasts.com">Denuncias</a>
+                    <a href="denuncias.blade.php">Denuncias</a>
                     <a href="https://laravel-news.com">Debates</a>
                     <a href="https://forge.laravel.com">Noticias</a>
                 </div>
