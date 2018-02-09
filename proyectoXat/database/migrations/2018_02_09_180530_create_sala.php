@@ -14,7 +14,7 @@ class CreateSala extends Migration
     public function up()
     {
         Schema::create('sala', function (Blueprint $table) {
-            $table->increments('id_sala');
+            $table->increments('id');
             $table->string('titulo')->unique(); 
             $table->string('imagen')->nullable();
             $table->timestamps();

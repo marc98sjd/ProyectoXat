@@ -15,14 +15,14 @@ class CreateUsersChat extends Migration
     {
         Schema::create('users_sala', function (Blueprint $table) {
             $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id_usuario')
+            $table->foreign('id_usuario')->references('id')
             ->on('users')->onDelete('cascade');
 
             $table->integer('id_sala')->unsigned();
-            $table->foreign('id_sala')->references('id_sala')
+            $table->foreign('id_sala')->references('id')
             ->on('sala')->onDelete('cascade');
 
-            $table->boolean('is_admin')->default('false');
+            $table->boolean('is_admin')->default(0);
         });
     }
 

@@ -14,13 +14,13 @@ class CreateDenuncias extends Migration
     public function up()
     {
         Schema::create('denuncias', function (Blueprint $table) {
-            $table->increments('id_denuncia');
+            $table->increments('id');
 
             $table->string('titulo');
             $table->string('descripcion');
             $table->string('imagen')->nullable();
             $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id_usuario')
+            $table->foreign('id_usuario')->references('id')
             ->on('users')->onDelete('cascade');
             
             $table->timestamps();   

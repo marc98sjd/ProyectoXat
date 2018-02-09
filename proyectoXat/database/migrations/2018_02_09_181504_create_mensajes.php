@@ -14,14 +14,14 @@ class CreateMensajes extends Migration
     public function up()
     {
         Schema::create('mensajes', function (Blueprint $table) {
-            $table->increments('id_mensaje');
+            $table->increments('id');
 
             $table->integer('id_sala')->unsigned();
-            $table->foreign('id_sala')->references('id_sala')
+            $table->foreign('id_sala')->references('id')
             ->on('sala')->onDelete('cascade');
 
             $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id_usuario')
+            $table->foreign('id_usuario')->references('id')
             ->on('users')->onDelete('cascade');
             $table->string('descripcion');
             $table->timestamps();   
