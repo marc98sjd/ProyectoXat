@@ -66,7 +66,10 @@
         <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
         <script type="text/javascript">
             $(function(){
-              $('a[name=btnLogin]').hover(desvanecer);
+              $('a[name=btnLogin]').hover(aparecer);
+              $('a{name=btnLogin]').mouseleave(function(){
+                $("a[name=btnLogin]").stop(true,true);
+              })
               /*$('button[name=btnRegistro]').click(aparecer);
               $('button[name=btnDesvanecer]').click(desvanecer);
               $('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);
@@ -82,12 +85,11 @@
               }
 
               function aparecer(){
-                $("a[name=btnLogin]").fadeIn(1500,desvanecer);
-                $("a[name=btnLogin]").mouseleave()
+                $("a[name=btnLogin]").fadeToggle(1500,desvanecer);
               }
 
               function desvanecer(){
-                $("a[name=btnLogin]").fadeOut(1500,aparecer);
+                $("a[name=btnLogin]").fadeToggle(1500,aparecer);
                 //para llamar a funcion en uno de los efectos:
                 // $("p").fadeOut(1500,nombreFuncion);
               }
