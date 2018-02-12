@@ -13,7 +13,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #f9d2a4;
+                background-color: #cefffd;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -63,20 +63,56 @@
                 margin-bottom: 30px;
             }
         </style>
+        <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+        <script type="text/javascript">
+            $(function(){
+              $('a[name=btnLogin]').hover(desvanecer);
+              /*$('button[name=btnRegistro]').click(aparecer);
+              $('button[name=btnDesvanecer]').click(desvanecer);
+              $('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);
+              $('button[name=btnDeslizarOcultar]').click(ocultarDeslizando);*/
+            });
+
+              function mostrar(){
+                $("a[name=btnLogin]").show();
+              }
+
+              function ocultar(){
+                $("p").hide();
+              }
+
+              function aparecer(){
+                $("a[name=btnLogin]").fadeIn(1500,desvanecer);
+                $("a[name=btnLogin]").mouseleave()
+              }
+
+              function desvanecer(){
+                $("a[name=btnLogin]").fadeOut(1500,aparecer);
+                //para llamar a funcion en uno de los efectos:
+                // $("p").fadeOut(1500,nombreFuncion);
+              }
+
+              function mostrarDeslizando(){
+                $("p").slideDown(1000);
+              }
+
+              function ocultarDeslizando(){
+                $("p").slideUp(1000);
+              }
+        </script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Inicio</a>
+                        <a href="{{ route('/home') }}">Inicio</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Registro</a>
+                        <a name="btnLogin" href="{{ route('login') }}">Login</a>
+                        <a name="btnRegistro" href="{{ route('register') }}">Registro</a>
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     ProyectoXat

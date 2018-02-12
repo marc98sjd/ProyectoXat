@@ -13,16 +13,16 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('root');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('servicios/denuncias', 'proyectoXatController@getDenuncia');
+Route::get('servicios/denuncias', 'proyectoXatController@getDenuncia')->name('denuncias');
 
-Route::get('servicios/debates', 'proyectoXatController@getDebates');
+Route::get('servicios/debates', 'proyectoXatController@getDebates')->name('debates');
 
-Route::get('servicios/xat', 'proyectoXatController@getXat');
+Route::get('servicios/xat', 'proyectoXatController@getXat')->name('xat');
 
-Route::get('servicios/noticias', 'proyectoXatController@getNoticias');
+Route::get('servicios/noticias', 'proyectoXatController@getNoticias')->name('noticias');
