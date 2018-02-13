@@ -39,6 +39,46 @@
                 margin-bottom: 30px;
             }
         </style>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+        <script type="text/javascript">
+            $(function(){
+              $(document).ready(ocultar);
+              $('a[name=btnLogin]').hover((function() {
+                    aparecer("a[name=btnLogin]");
+              }));
+
+              $('a[name=btnRegistro]').hover((function() {
+                    aparecer("a[name=btnRegistro]");
+              }));
+
+              $('form[name=formRegistro]').hover((function() {
+                    mostrarDeslizando("button[name=btnEnvio]");
+              }));
+              /*$('button[name=btnRegistro]').click(aparecer);
+              $('button[name=btnDesvanecer]').click(desvanecer);
+              $('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);
+              $('button[name=btnDeslizarOcultar]').click(ocultarDeslizando);*/
+            });
+              function mostrar(elemento){
+                $(elemento).show();
+              }
+
+              function ocultar(){
+                $("button[name=btnEnvio]").hide();
+              }
+
+              function aparecer(elemento){
+                $(elemento).fadeToggle(1500);
+              }
+
+              function mostrarDeslizando(elemento){
+                $(elemento).slideDown(1000);
+              }
+
+              function ocultarDeslizando(){
+                $("p").slideUp(1000);
+              }
+        </script>
 </head>
 <body style="background-color: #cefffd;">
     <div id="app">
@@ -76,8 +116,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Registro</a></li>
+                            <li><a name="btnLogin" href="{{ route('login') }}">Login</a></li>
+                            <li><a name="btnRegistro" href="{{ route('register') }}">Registro</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle hvr-hang" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

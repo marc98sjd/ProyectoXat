@@ -66,16 +66,18 @@
         <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
         <script type="text/javascript">
             $(function(){
-              $('a[name=btnLogin]').hover(aparecer);
-              $('a{name=btnLogin]').mouseleave(function(){
-                $("a[name=btnLogin]").stop(true,true);
-              })
+              $('a[name=btnLogin]').hover((function() {
+                    aparecer("a[name=btnLogin]");
+              }));
+
+              $('a[name=btnRegistro]').hover((function() {
+                    aparecer("a[name=btnRegistro]");
+              }));
               /*$('button[name=btnRegistro]').click(aparecer);
               $('button[name=btnDesvanecer]').click(desvanecer);
               $('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);
               $('button[name=btnDeslizarOcultar]').click(ocultarDeslizando);*/
             });
-
               function mostrar(){
                 $("a[name=btnLogin]").show();
               }
@@ -84,14 +86,8 @@
                 $("p").hide();
               }
 
-              function aparecer(){
-                $("a[name=btnLogin]").fadeToggle(1500,desvanecer);
-              }
-
-              function desvanecer(){
-                $("a[name=btnLogin]").fadeToggle(1500,aparecer);
-                //para llamar a funcion en uno de los efectos:
-                // $("p").fadeOut(1500,nombreFuncion);
+              function aparecer(elemento){
+                $(elemento).fadeToggle(1500);
               }
 
               function mostrarDeslizando(){
@@ -121,10 +117,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{url('/servicios/xat')}}">Xat</a>
-                    <a href="{{url('/servicios/denuncias')}}">Denuncias</a>
-                    <a href="{{url('/servicios/debates')}}">Debates</a>
-                    <a href="{{url('/servicios/noticias')}}">Noticias</a>
+                    <a href="#">Xat</a>
+                    <a href="#">Denuncias</a>
+                    <a href="#">Debates</a>
+                    <a href="#">Noticias</a>
                 </div>
             </div>
         </div>
