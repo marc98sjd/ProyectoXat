@@ -56,7 +56,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="#">
+                                <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">
                                     Recuperar contraseña
                                 </a>
                             </div>

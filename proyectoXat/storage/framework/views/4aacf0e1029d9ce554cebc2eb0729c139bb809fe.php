@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
-    <?php echo e(Breadcrumbs::render('main')); ?>
-
     <div class="container">
+        <?php echo e(Breadcrumbs::render('main')); ?>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
