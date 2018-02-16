@@ -27,5 +27,8 @@ Route::get('servicios/xat', 'proyectoXatController@getXat')->name('xat');
 
 Route::get('servicios/noticias', 'proyectoXatController@getNoticias')->name('noticias');
 
-Route::post('servicios/denuncias/createDenuncia', 'proyectoXatController@store');
 Route::post('servicios/denuncias/addComment', 'proyectoXatController@update');
+
+Route::post('servicios/denuncias/createDenuncia', 'proyectoXatController@store');
+
+Route::get('admin/denuncias', 'proyectoXatController@getDenuncia')->name('denuncias');
