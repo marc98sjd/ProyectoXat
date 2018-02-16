@@ -72,18 +72,32 @@
                 <div class="col-md-8">
                     <h4>Titulo:
                         <?php
-                        echo "$denuncia->titulo";
+                        echo "<ul>$denuncia->titulo</ul>";
                         ?>
                     </h4>
-                    <ul>
-                        <span>
-                            <?php
-                            echo "$denuncia->descripcion";
-                            ?>
-                        </span>
-                    </ul>
+                    <label>Descripción
+                        <?php
+                        echo "<ul><p>$denuncia->descripcion</p></ul>";
+                        ?>
+                    </label>
                     <form method="POST" action="<?php echo e(url('servicios/denuncias/addComment')); ?>">
-                        <input type="text" name="id" placeholder="<?php echo "$denuncia->id";?>" style="display: none;">
+                        <?php echo e(csrf_field()); ?>
+
+                        <input type="text" name="id" value="<?php echo "$denuncia->id";?>" style="display: none;">
+                        <input type="text" name="ultimoComentario" value="<?php echo "$denuncia->comentario";?>" style="display: none;">
+                        <label>Comentarios:<br><?php
+                            $comentario = explode("/", $denuncia->comentario);
+                            foreach($comentario as $coment){
+                                if($coment==''){
+
+                                }
+                                else{
+                                    echo "<ul>-".$coment."</ul>";
+                                }
+
+                            }
+                            ?></label>
+                        <br>
                         <label>Nuevo comentario</label>
                         <textarea name="comentario" style="width: 100%; height: 150px"></textarea>
                         <button type="submit" class="btn btn-primary col-md-12">
