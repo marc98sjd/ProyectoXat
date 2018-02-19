@@ -12,7 +12,7 @@
             {{ csrf_field() }}
             <div class="row">
                 <div class="col-md-12" style="padding-bottom: 40px;">
-                    <h2 class="text-center title">Crear Denuncias</h2>
+                    <h2 class="text-center title">Crear Denuncia</h2>
                 </div>
                 <div class="col-md-6 text-center">
                     <div class="form-group">
@@ -21,7 +21,7 @@
                         <br>
                         <label>Descripción</label>
                         <textarea class="form-control" maxlength="250" name="descripcion" style="height: 180px"></textarea>
-                        <br>
+                        <br><br>
                         <div class="col-md-8">
                             <label>Imagen para validar la denuncia</label>
                             <input class="form-control" type="file" name="imagen">
@@ -33,7 +33,9 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
-                    <label>Marca la ubicación</label>
+                    <label>Dirección</label>
+                    <input id="geocomplete" placeholder="Escribe la dirección" class="form-control" name="inputDireccion" type="text">
+                    <br>
                     <div class="form-control" id="mapa" style="height:350px;background:yellow"></div>
                 </div>
             </div>
@@ -47,13 +49,20 @@
 
             </div>
         </form>
-        <div class="row">
-            <div class="col-md-12" style="padding: 40px;">
-                <h2 class="text-center title">Mostrar Denuncias</h2>
+        @if($arrayDenuncias->isEmpty())
+            <div class="row">
+                <div class="col-md-12" style="padding: 40px;">
+                    <h4 class="text-center">Todavía no hay denuncias</h4>
+                </div>
             </div>
-        </div>
 
-        @foreach( $arrayDenuncias as $denuncia )
+        @else
+            <div class="row">
+                <div class="col-md-12" style="padding: 40px;">
+                    <h2 class="text-center title">Denuncias</h2>
+                </div>
+            </div>  
+            @foreach( $arrayDenuncias as $denuncia )
             <div class="row" style="padding: 50px">
                 <div class="col-md-8">
                     <h4>Titulo:
@@ -95,6 +104,7 @@
                 </div>
 
             </div>
-        @endforeach
+            @endforeach
+        @endif
     </div>
 @endsection
