@@ -1,11 +1,15 @@
 <?php $__env->startSection('content'); ?>
-    <?php echo e(Breadcrumbs::render('main')); ?>
-
     <div class="container">
+        <?php echo e(Breadcrumbs::render('main')); ?>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Bienvenido <?php echo e(Auth::user()->name); ?></div>
+                    <div class="panel-heading">Bienvenido
+                        <?php if((Auth::user()->is_admin)==1): ?>
+                            administrador
+                        <?php endif; ?>
+                        <?php echo e(Auth::user()->name); ?></div>
 
                     <div class="panel-body">
                         <?php if(session('status')): ?>
