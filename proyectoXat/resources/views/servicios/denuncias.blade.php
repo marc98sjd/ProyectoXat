@@ -34,20 +34,7 @@
                 </div>
                 <div class="col-md-6 text-center">
                     <label>Marca la ubicación</label>
-                    <div class="form-control" id="map" style="height:350px;background:yellow"></div>
-
-                    <script>
-                        function myMap() {
-                            var mapOptions = {
-                                center: new google.maps.LatLng(41.3 , 2.1),
-                                zoom: 11,
-                                mapTypeId: google.maps.MapTypeId.HYBRID
-                            }
-                            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                        }
-                    </script>
-
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+                    <div class="form-control" id="mapa" style="height:350px;background:yellow"></div>
                 </div>
             </div>
             <div class="row">
