@@ -37,7 +37,10 @@ class proyectoXatController extends Controller
 	}
 
 	public function getXat(){
-    	return view('servicios.xat');
+        $dbquery = DB::table('sala')->get();
+
+
+    	return view('servicios.xat',['salas' => $dbquery]);
 	}
 
     public function store(Request $request)

@@ -23,12 +23,11 @@ Route::get('servicios/denuncias', 'proyectoXatController@getDenuncia')->name('de
 
 Route::get('servicios/debates', 'proyectoXatController@getDebates')->name('debates');
 
-Route::get('servicios/xat', 'proyectoXatController@getXat')->name('xat');
+Route::resource('servicios/xat', 'xatController');
+Route::get('servicios/xat', 'xatController@index')->name('xat');
 
 Route::get('servicios/noticias', 'proyectoXatController@getNoticias')->name('noticias');
 
 Route::post('servicios/denuncias/addComment', 'proyectoXatController@update');
 
 Route::post('servicios/denuncias/createDenuncia', 'proyectoXatController@store');
-
-Route::get('admin/denuncias', 'proyectoXatController@getDenuncia')->name('denuncias');
