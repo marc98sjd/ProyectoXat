@@ -1,17 +1,15 @@
 var salaNow;
+var userId;
 var checkSala;
-var userId
 
 
 function abrirSala(sala, idUser) {
     userId = parseInt(idUser);
-    if(!checkSala){
-        clearInterval(checkSala);
-    }
+    clearInterval(checkSala);
     salaNow=sala;
-    var checkSala = setInterval(function(){
+    checkSala = setInterval(function(){
         $.ajax({
-            url: "http://localhost:8000/servicios/xat/"+sala,
+            url: "http://127.0.0.1:8000/servicios/xat/"+sala,
             type: "GET",
             dataType: "json",
             success: function (data) {
@@ -28,7 +26,7 @@ function abrirSala(sala, idUser) {
                 console.log(data);
             }
         });
-    }, 1000);
+    }, 2000);
 
 }
 
@@ -56,7 +54,7 @@ function enviarMensajeSala() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:8000/servicios/xat/crearMensaje/"+salaNow+"/"+mensaje,
+        url: "http://127.0.0.1:8000/servicios/xat/crearMensaje/"+salaNow+"/"+mensaje,
         success: function (data) {
             console.log(data);
         }

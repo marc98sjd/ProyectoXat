@@ -31,13 +31,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chat.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/chat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="59" column="34" lean-forward="false" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+            <state relative-caret-position="126">
+              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
               <folding>
-                <marker date="1519143156515" expanded="true" signature="716:848" ph="..." />
+                <marker date="1519145669409" expanded="true" signature="683:815" ph="..." />
               </folding>
             </state>
           </provider>
@@ -57,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/servicios/xat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="630">
-              <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
+              <caret line="35" column="51" lean-forward="false" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
               <folding>
                 <element signature="e#1449#1602#0#HTML" expanded="true" />
                 <element signature="e#2821#2844#0#HTML" expanded="true" />
@@ -66,17 +66,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="xatController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="xatController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/xatController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="129" column="22" lean-forward="false" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="22" />
+            <state relative-caret-position="-268">
+              <caret line="75" column="39" lean-forward="true" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
               <folding>
                 <element signature="e#39#46#0#PHP" expanded="true" />
-                <marker date="1519142329845" expanded="true" signature="1809:1919" ph="SELECT m.id_... mensajes" />
-                <marker date="1519142329845" expanded="true" signature="1973:2113" ph="/** * Show t... " />
-                <marker date="1519142329845" expanded="true" signature="2172:2354" ph="/** * Update... " />
-                <marker date="1519142329845" expanded="true" signature="2433:2567" ph="/** * Remove... " />
+                <marker date="1519146239955" expanded="true" signature="1827:1937" ph="SELECT m.id_... mensajes" />
+                <marker date="1519146239955" expanded="true" signature="1827:1959" ph="SELECT m.id_... mensajes" />
+                <marker date="1519146239955" expanded="true" signature="2013:2153" ph="/** * Show t... " />
+                <marker date="1519146239955" expanded="true" signature="2212:2394" ph="/** * Update... " />
+                <marker date="1519146239955" expanded="true" signature="2473:2607" ph="/** * Remove... " />
               </folding>
             </state>
           </provider>
@@ -128,8 +129,8 @@
         <option value="$PROJECT_DIR$/resources/views/servicios/mensaje.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/servicios/xat.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/xatController.php" />
         <option value="$PROJECT_DIR$/public/js/chat.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/xatController.php" />
       </list>
     </option>
   </component>
@@ -270,12 +271,12 @@
       <updated>1518793898843</updated>
       <workItem from="1518793899904" duration="15032000" />
       <workItem from="1519053129762" duration="27950000" />
-      <workItem from="1519139307235" duration="3850000" />
+      <workItem from="1519139307235" duration="6416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46832000" />
+    <option name="totallyTimeSpent" value="49398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="304" y="27" width="1920" height="1081" extended-state="6" />
@@ -341,7 +342,7 @@
         <state relative-caret-position="954">
           <caret line="53" column="27" lean-forward="false" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
           <folding>
-            <marker date="1519143156515" expanded="true" signature="716:848" ph="..." />
+            <marker date="1519145669409" expanded="true" signature="683:815" ph="..." />
           </folding>
         </state>
       </provider>
@@ -360,10 +361,11 @@
           <caret line="126" column="20" lean-forward="false" selection-start-line="126" selection-start-column="20" selection-end-line="126" selection-end-column="20" />
           <folding>
             <element signature="e#39#46#0#PHP" expanded="true" />
-            <marker date="1519142329845" expanded="true" signature="1809:1919" ph="SELECT m.id_... mensajes" />
-            <marker date="1519142329845" expanded="true" signature="1973:2113" ph="/** * Show t... " />
-            <marker date="1519142329845" expanded="true" signature="2172:2354" ph="/** * Update... " />
-            <marker date="1519142329845" expanded="true" signature="2433:2567" ph="/** * Remove... " />
+            <marker date="1519146239955" expanded="true" signature="1827:1937" ph="SELECT m.id_... mensajes" />
+            <marker date="1519146239955" expanded="true" signature="1827:1959" ph="SELECT m.id_... mensajes" />
+            <marker date="1519146239955" expanded="true" signature="2013:2153" ph="/** * Show t... " />
+            <marker date="1519146239955" expanded="true" signature="2212:2394" ph="/** * Update... " />
+            <marker date="1519146239955" expanded="true" signature="2473:2607" ph="/** * Remove... " />
           </folding>
         </state>
       </provider>
@@ -453,7 +455,7 @@
         <state relative-caret-position="324">
           <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
           <folding>
-            <marker date="1519143156515" expanded="true" signature="716:848" ph="..." />
+            <marker date="1519145669409" expanded="true" signature="683:815" ph="..." />
           </folding>
         </state>
       </provider>
@@ -483,10 +485,11 @@
           <caret line="50" column="96" lean-forward="false" selection-start-line="50" selection-start-column="96" selection-end-line="50" selection-end-column="96" />
           <folding>
             <element signature="e#39#46#0#PHP" expanded="true" />
-            <marker date="1519142329845" expanded="true" signature="1809:1919" ph="SELECT m.id_... mensajes" />
-            <marker date="1519142329845" expanded="true" signature="1973:2113" ph="/** * Show t... " />
-            <marker date="1519142329845" expanded="true" signature="2172:2354" ph="/** * Update... " />
-            <marker date="1519142329845" expanded="true" signature="2433:2567" ph="/** * Remove... " />
+            <marker date="1519146239955" expanded="true" signature="1827:1937" ph="SELECT m.id_... mensajes" />
+            <marker date="1519146239955" expanded="true" signature="1827:1959" ph="SELECT m.id_... mensajes" />
+            <marker date="1519146239955" expanded="true" signature="2013:2153" ph="/** * Show t... " />
+            <marker date="1519146239955" expanded="true" signature="2212:2394" ph="/** * Update... " />
+            <marker date="1519146239955" expanded="true" signature="2473:2607" ph="/** * Remove... " />
           </folding>
         </state>
       </provider>
@@ -579,17 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/servicios/xat.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
-          <folding>
-            <element signature="e#1449#1602#0#HTML" expanded="true" />
-            <element signature="e#2821#2844#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -598,26 +590,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/xatController.php">
+    <entry file="file://$PROJECT_DIR$/public/js/chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="129" column="22" lean-forward="false" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="22" />
+        <state relative-caret-position="126">
+          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
-            <element signature="e#39#46#0#PHP" expanded="true" />
-            <marker date="1519142329845" expanded="true" signature="1809:1919" ph="SELECT m.id_... mensajes" />
-            <marker date="1519142329845" expanded="true" signature="1973:2113" ph="/** * Show t... " />
-            <marker date="1519142329845" expanded="true" signature="2172:2354" ph="/** * Update... " />
-            <marker date="1519142329845" expanded="true" signature="2433:2567" ph="/** * Remove... " />
+            <marker date="1519145669409" expanded="true" signature="683:815" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/chat.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/servicios/xat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="59" column="34" lean-forward="false" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+        <state relative-caret-position="630">
+          <caret line="35" column="51" lean-forward="false" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
           <folding>
-            <marker date="1519143156515" expanded="true" signature="716:848" ph="..." />
+            <element signature="e#1449#1602#0#HTML" expanded="true" />
+            <element signature="e#2821#2844#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/xatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-268">
+          <caret line="75" column="39" lean-forward="true" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
+          <folding>
+            <element signature="e#39#46#0#PHP" expanded="true" />
+            <marker date="1519146239955" expanded="true" signature="1827:1937" ph="SELECT m.id_... mensajes" />
+            <marker date="1519146239955" expanded="true" signature="1827:1959" ph="SELECT m.id_... mensajes" />
+            <marker date="1519146239955" expanded="true" signature="2013:2153" ph="/** * Show t... " />
+            <marker date="1519146239955" expanded="true" signature="2212:2394" ph="/** * Update... " />
+            <marker date="1519146239955" expanded="true" signature="2473:2607" ph="/** * Remove... " />
           </folding>
         </state>
       </provider>

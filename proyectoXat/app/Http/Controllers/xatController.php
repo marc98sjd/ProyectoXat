@@ -65,15 +65,15 @@ class xatController extends Controller
      */
     public function show($id)
     {
-        $dbquery = DB::table('mensajes')
+        /**$dbquery = DB::table('mensajes')
             ->join('users', function($join)
             {
                 $join->on('mensajes.id_usuario', '=', 'users.id');
             })
-            ->select('name', 'descripcion')
+            ->select('name', 'descripcion', 'created_at')
             ->where('id_sala', $id)
-            ->get();
-        //$dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id'");
+            ->get();**/
+        $dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id' ORDER BY m.created_at");
 
         return json_encode($dbquery);
     }
