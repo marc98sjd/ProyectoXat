@@ -24,7 +24,10 @@ Route::get('servicios/denuncias', 'proyectoXatController@getDenuncia')->name('de
 Route::get('servicios/debates', 'proyectoXatController@getDebates')->name('debates');
 
 Route::resource('servicios/xat', 'xatController');
+
 Route::get('servicios/xat', 'xatController@index')->name('xat');
+
+Route::get('servicios/xat/crearMensaje/{id}/{mensaje}', 'xatController@crearMensaje');
 
 Route::get('servicios/noticias', 'proyectoXatController@getNoticias')->name('noticias');
 

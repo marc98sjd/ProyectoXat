@@ -1,25 +1,34 @@
-function abrirSala(sala) {
-    alert(sala);
-    if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-     xmlhttp = new XMLHttpRequest();
-    } else {
-      // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+var salaNow;
+var checkSala;
+var userId
+
+
+function abrirSala(sala, idUser) {
+    userId = parseInt(idUser);
+    if(!checkSala){
+        clearInterval(checkSala);
     }
-    xmlhttp.onreadystatechange = function() {
-       if (this.readyState == 4 && this.status == 200) {
-           var mensaje = new Array();
-           mensaje.push(this.responseText);
-          for (var key in this.responseText) {
-              $('boxMensajes').append($('<p></p>').text(this.responseText[key]));
-              console.log("key " + key + " has value " + this.responseText[key]);
-          }
-          document.getElementById("boxMensajes").innerHTML = this.responseText;
-      }
-    };
-    xmlhttp.open("GET","http://localhost:8000/servicios/xat/"+sala,true);
-    xmlhttp.send();
+    salaNow=sala;
+    var checkSala = setInterval(function(){
+        $.ajax({
+            url: "http://localhost:8000/servicios/xat/"+sala,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                $('#boxMensajes').empty();
+                for (var key in data) {
+                    $('#boxMensajes').append(
+                        $('<div class="col-md-12"></div>').append(
+                            $('<div class="col-md-12"></div>').append(
+                                $('<div style="text-align: right;margin-bottom: 10px;padding: 2px 25px; background-color: darkgrey; opacity: 0.5; border-radius: 10px; color: white"></div>').append(
+                                    $('<h4></h4>').text(data[key]["name"]),$('<p></p>').text(data[key]["descripcion"])))));
+
+                    console.log("key " + key + " has value " + data[key]["name"]);
+                }
+                console.log(data);
+            }
+        });
+    }, 1000);
 
 }
 
@@ -39,4 +48,17 @@ function crearPrivado() {
 }
 function cerrarPrivado() {
 
+}
+
+function enviarMensajeSala() {
+    var mensaje = $('#newMensaje').val();
+    $('#newMensaje').val("");
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8000/servicios/xat/crearMensaje/"+salaNow+"/"+mensaje,
+        success: function (data) {
+            console.log(data);
+        }
+    });
 }

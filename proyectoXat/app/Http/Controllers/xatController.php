@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 use DB;
+use Session;
+use auth;
 use Illuminate\Http\Request;
+use App\mensaje;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Input;
 
 class xatController extends Controller
 {
@@ -13,10 +18,10 @@ class xatController extends Controller
      */
     public function index()
     {
-        $dbquery = DB::table('sala')->get();
+        $salas = DB::table('sala')->get();
+        $usuarios = DB::table('users')->where('id', Auth::user()->id)->get();
 
-
-        return view('servicios.xat',['salas' => $dbquery]);
+        return view('servicios.xat',compact('salas','usuarios'));
     }
 
     /**
@@ -26,7 +31,7 @@ class xatController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,7 +42,19 @@ class xatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $db = new Mensaje;
+        $db -> id_sala = $request -> sala;
+        $db -> descripcion = $request -> descripcion;
+        $db -> id_usuario = Auth::user()->id;
+        $db -> save();
+
+        $response = array(
+            'status' => 'success',
+            'msg' => 'Setting created successfully',
+        );
+        $data= $request->sala;
+
+        return response()->json($data);
     }
 
     /**
@@ -48,8 +65,15 @@ class xatController extends Controller
      */
     public function show($id)
     {
-        $dbquery = DB::table('mensajes')->where('id_sala', $id)->pluck('descripcion','id_usuario');
-
+        $dbquery = DB::table('mensajes')
+            ->join('users', function($join)
+            {
+                $join->on('mensajes.id_usuario', '=', 'users.id');
+            })
+            ->select('name', 'descripcion')
+            ->where('id_sala', $id)
+            ->get();
+        //$dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id'");
 
         return json_encode($dbquery);
     }
@@ -86,5 +110,25 @@ class xatController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  int $id, str $mensaje
+     * @return \Illuminate\Http\Response
+     */
+    public function crearMensaje($id, $mensaje)
+    {
+        $db = new mensaje;
+        $db -> id_sala = $id;
+        $db -> descripcion = $mensaje;
+        $db -> id_usuario = Auth::user()->id;
+        $db -> save();
+
+        $response = array(
+            'status' => 'success',
+            'msg' => 'created successfully',
+        );
+        return $response;
     }
 }
