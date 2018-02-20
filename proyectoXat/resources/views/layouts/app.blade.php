@@ -11,9 +11,9 @@
     <title>{{ config('app.name', 'ProyectoXat') }}</title>
 
     <!-- Estilos y links -->
-    <script src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCPUVilNfe8SQEh7J1hD7ucqi5oOaV2Y6c"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hover.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
@@ -40,45 +40,60 @@
                 margin-bottom: 30px;
             }
         </style>
-    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.js') }}"></script>
+</head>
+<body style="background-color: #cefffd;">
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.geocomplete.js') }}"></script>
+    <script src="{{ asset('js/logger.js') }}"></script>
     <script type="text/javascript">
         $(function(){
             $(document).ready(ocultar);
-                $('a[name=btnLogin]').hover((function() {
-                    aparecer("a[name=btnLogin]");
-                }));
+                
+            $('a[name=btnLogin]').hover((function() {                        
+                aparecer("a[name=btnLogin]");
+            }));
+          
+            $('a[name=btnRegistro]').hover((function() {                         
+                aparecer("a[name=btnRegistro]");
+            }));                        
+          
+            $('form[name=formRegistro]').hover((function() {                           
+                mostrarDeslizando("button[name=btnEnvio]");
+            }));
 
-                $('a[name=btnRegistro]').hover((function() {
-                    aparecer("a[name=btnRegistro]");
-                }));
-
-                $('form[name=formRegistro]').hover((function() {
-                    mostrarDeslizando("button[name=btnEnvio]");
-                }));
-                /*$('button[name=btnRegistro]').click(aparecer);
-                $('button[name=btnDesvanecer]').click(desvanecer);
-                $('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);
-                $('button[name=btnDeslizarOcultar]').click(ocultarDeslizando);*/
+            $("#geocomplete").geocomplete({
+                map: "#mapa"
+            });
         });
-        function mostrar(elemento){
-            $(elemento).show();
-        }
 
-        function ocultar(){
+        /*$('button[name=btnRegistro]').click(aparecer);                         
+        $('button[name=btnDesvanecer]').click(desvanecer);                       
+        $('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);                       
+        $('button[name=btnDeslizarOcultar]').click(ocultarDeslizando);*/
+
+        function mostrar(elemento){              
+            $(elemento).show();                
+        }             
+       
+        function ocultar(){             
             $("button[name=btnEnvio]").hide();
-        }
+        }                
+        
+        function aparecer(elemento){                
+           $(elemento).fadeToggle(1500);                 
+        }    
 
-        function aparecer(elemento){
-            $(elemento).fadeToggle(1500);
-        }
         function mostrarDeslizando(elemento){
             $(elemento).slideDown(1000);
+        }   
+
+        function ocultarDeslizando(){                 
+            $("p").slideUp(1000);              
         }
 
-        function ocultarDeslizando(){
-            $("p").slideUp(1000);
-        }
-        function mapaGoogle() {
+        function mapaGoogle() {                 
             var latitud = latitud();
             var longitud = longitud();
             alert("latitud "+latitud);
@@ -90,6 +105,7 @@
             }
             var map = new google.maps.Map(document.getElementById("mapa"), mapOptions);
         }
+
         function latitud(){
             var lat = "";
             if (navigator.geolocation) {
@@ -97,9 +113,11 @@
             }
             return lat;
         }
+
         function devolverLatitud(position){
             return position.coords.latitude;
         }
+
         function longitud(){
             var lon = "";
             if (navigator.geolocation) {
@@ -107,12 +125,11 @@
             }
             return lon;
         }
+
         function devolverLongitud(position){
             return position.coords.longitude;
         }
     </script>
-</head>
-<body  onload="mapaGoogle()" style="background-color: #cefffd;">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

@@ -10,7 +10,7 @@
 
     <title><?php echo e(config('app.name', 'ProyectoXat')); ?></title>
 
-    <!-- Styles -->
+    <!-- Estilos y links -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/hover.css')); ?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -39,48 +39,24 @@
                 margin-bottom: 30px;
             }
         </style>
-    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-        <script type="text/javascript">
-            $(function(){
-              $(document).ready(ocultar);
-              $('a[name=btnLogin]').hover((function() {
-                    aparecer("a[name=btnLogin]");
-              }));
-
-              $('a[name=btnRegistro]').hover((function() {
-                    aparecer("a[name=btnRegistro]");
-              }));
-
-              $('form[name=formRegistro]').hover((function() {
-                    mostrarDeslizando("button[name=btnEnvio]");
-              }));
-              /*$('button[name=btnRegistro]').click(aparecer);
-              $('button[name=btnDesvanecer]').click(desvanecer);
-              $('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);
-              $('button[name=btnDeslizarOcultar]').click(ocultarDeslizando);*/
-            });
-              function mostrar(elemento){
-                $(elemento).show();
-              }
-
-              function ocultar(){
-                $("button[name=btnEnvio]").hide();
-              }
-
-              function aparecer(elemento){
-                $(elemento).fadeToggle(1500);
-              }
-
-              function mostrarDeslizando(elemento){
-                $(elemento).slideDown(1000);
-              }
-
-              function ocultarDeslizando(){
-                $("p").slideUp(1000);
-              }
-        </script>
+    <!--<script type="text/javascript" src="<?php echo e(asset('js/jquery-3.2.1.js')); ?>"></script>-->
 </head>
 <body style="background-color: #cefffd;">
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="<?php echo e(asset('js/jquery.geocomplete.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/logger.js')); ?>"></script>
+    <script type="text/javascript">
+        
+
+        $(function(){
+        
+            $("#geocomplete").geocomplete({
+                map: "#mapa"
+            });
+        
+        });
+    </script>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
