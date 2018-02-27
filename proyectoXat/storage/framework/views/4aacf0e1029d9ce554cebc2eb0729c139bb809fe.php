@@ -36,6 +36,11 @@
             <a class="hvr-rectangle-out hvr-wobble-bottom" href="<?php echo e(url('/servicios/noticias')); ?>">Noticias</a>
         </div>
     </div>
+    <br><br><br><br>
+    <div class="row container-fluid" style="height: 150px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 h-100 d-inline-block" style="background-color: grey; height: 100%;"></div>
+    </div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
