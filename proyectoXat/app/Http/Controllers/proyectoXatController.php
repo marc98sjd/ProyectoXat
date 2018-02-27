@@ -29,7 +29,15 @@ class proyectoXatController extends Controller
 	}
 
 	public function getNoticias(){
-    	return view('servicios.noticias');
+        
+        if((Auth::user()->is_admin)==1){
+            $dbquery = DB::table('denuncias')->get();
+        }
+        else{
+            $dbquery = DB::table('denuncias')->where('id_usuario', Auth::user()->id)->get();
+        }
+
+    	return view('servicios.noticias',['arrayNoticias' => $dbquery]);
 	}
 
 	public function getDebates(){

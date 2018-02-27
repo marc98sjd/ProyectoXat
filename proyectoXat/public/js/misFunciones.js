@@ -1,0 +1,3 @@
+function crearNoticia(){
+	alert("hola");
+}
