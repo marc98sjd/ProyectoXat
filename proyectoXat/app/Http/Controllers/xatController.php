@@ -139,7 +139,7 @@ class xatController extends Controller
         $db -> save();
 
         $response = array(
-            'status' => 'success'.$time,
+            'status' => 'success',
             'msg' => 'created successfully',
         );
         return $response;

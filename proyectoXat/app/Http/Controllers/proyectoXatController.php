@@ -28,17 +28,11 @@ class proyectoXatController extends Controller
         return view('servicios.denuncias',['arrayDenuncias' => $dbquery]);
 	}
 
-	public function getNoticias(){
-        
-        if((Auth::user()->is_admin)==1){
-            $dbquery = DB::table('denuncias')->get();
-        }
-        else{
-            $dbquery = DB::table('denuncias')->where('id_usuario', Auth::user()->id)->get();
-        }
+    public function getNoticias(){
 
-    	return view('servicios.noticias',['arrayNoticias' => $dbquery]);
-	}
+        $dbquery = DB::table('noticias')->orderBy('created_at', 'desc')->get();
+        return view('servicios.noticias',['arrayNoticias' => $dbquery]);
+    }
 
 	public function getDebates(){
     	return view('servicios.debates');
@@ -104,6 +98,19 @@ class proyectoXatController extends Controller
         DB::update('update noticias set comentario = ? where id = ?', [$comentario, $request->input('id')]);
 
         return redirect('servicios/noticias')->with('message', 'Comentario añadido correctamente!');
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  str $categoria
+     * @return \Illuminate\Http\Response
+     */
+    public function getCat($categoria){
+        $noticias = DB::select("SELECT titulo, descripcion, imagen FROM noticias WHERE categoria='$categoria'");
+
+        return json_encode($noticias);
+
+
     }
 
 

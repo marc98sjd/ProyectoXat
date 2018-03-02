@@ -1,15 +1,17 @@
 $(function(){
-    $(document).ready(ocultar);
-                
-    $('a[name=btnLogin]').hover((function() {                        
-       aparecer("a[name=btnLogin]");
+    $(document).ready(function(){
+        ocultar();
+    });
+
+    $('a[name=btnLogin]').hover((function() {
+        aparecer("a[name=btnLogin]");
     }));
-          
-    $('a[name=btnRegistro]').hover((function() {                         
+
+    $('a[name=btnRegistro]').hover((function() {
         aparecer("a[name=btnRegistro]");
-    }));                        
-  
-    $('form[name=formRegistro]').hover((function() {                           
+    }));
+
+    $('form[name=formRegistro]').hover((function() {
         mostrarDeslizando("button[name=btnEnvio]");
     }));
 
@@ -18,32 +20,32 @@ $(function(){
     });
 });
 
-/*$('button[name=btnRegistro]').click(aparecer);                         
-$('button[name=btnDesvanecer]').click(desvanecer);                       
-$('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);                       
+/*$('button[name=btnRegistro]').click(aparecer);
+$('button[name=btnDesvanecer]').click(desvanecer);
+$('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);
 $('button[name=btnDeslizarOcultar]').click(ocultarDeslizando);*/
 
-function mostrar(elemento){              
-    $(elemento).show();                
-}             
+function mostrar(elemento){
+    $(elemento).show();
+}
 
-function ocultar(){             
+function ocultar(){
     $("button[name=btnEnvio]").hide();
-}                
+}
 
-function aparecer(elemento){                
-   $(elemento).fadeToggle(1500);                 
-}    
+function aparecer(elemento){
+    $(elemento).fadeToggle(1500);
+}
 
 function mostrarDeslizando(elemento){
     $(elemento).slideDown(1000);
-}   
-
-function ocultarDeslizando(){                 
-    $("p").slideUp(1000);              
 }
 
-function mapaGoogle() {                 
+function ocultarDeslizando(){
+    $("p").slideUp(1000);
+}
+
+function mapaGoogle() {
     var latitud = latitud();
     var longitud = longitud();
     alert("latitud "+latitud);
@@ -81,12 +83,10 @@ function devolverLongitud(position){
 }
 
 function crearNoticia(){
-    var form = $("<form></form>");
-    form.attr({method:"POST", action:"/servicios/noticias/createNoticia", enctype:"multipart/form-data", class:"form-group"});
-    //form.prepend("{{ csrf_field() }}");
+    var form = $('form[name=formNoticia]');
 
     var divRowFormContent = $("<div></div>").addClass("row");
-    
+
     var divTitulo = $("<div></div>").addClass("col-md-12");
     divTitulo.css("padding-bottom", "40px");
 
@@ -94,7 +94,7 @@ function crearNoticia(){
     divTitulo.append(h2);
 
     var divMargen = $("<div></div>").addClass("col-md-3");
-    
+
     var divFormOuter = $("<div></div>").addClass("col-md-6 text-center");
     var divFormInner = $("<div></div>").addClass("form-group");
 
@@ -134,6 +134,32 @@ function crearNoticia(){
     divCentrado.append(espaciamiento,botonSubmit);
     divRowFormSubmit.append(divMargen2,divCentrado);
 
-    form.append(divRowFormContent,divRowFormSubmit);
-    $('div[name=btnForm]').replaceWith(form);
+    $('div[name=substituir1]').replaceWith(divRowFormContent);
+    form.append(divRowFormSubmit);
+}
+
+function buscarNoticia() {
+    $('#categoria').empty();
+    var categoria = $('#noticiasCategorias option:selected').text();
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:8000/servicios/noticias/"+categoria,
+        dataType: "json",
+        success: function (data) {
+            for (var key in data) {
+                $('#categoria').append(
+                    $('<div class="col-md-2"></div>'),
+                    $('<div class="col-md-8" style="margin-top: 50px; background-color: lightgrey; border-radius: 15px; padding: 20px;"></div>').append(
+                        $('<div class="col-md-8"></div>').append(
+                            $('<h3></h3>').text(data[key]["titulo"]),
+                            $('<p></p>').text(data[key]["descripcion"])
+                            ),
+                        $('<div class="col-md-2"></div>').append(
+                                $('<img src="http://127.0.0.1:8000/'+data[key]["imagen"]+'" alt="Imagen no disponible!" style="height:200px">')
+
+                    )));
+            }
+            console.log(data);
+        }
+    });
 }

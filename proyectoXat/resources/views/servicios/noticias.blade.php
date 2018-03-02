@@ -29,7 +29,29 @@
                 <h2 class="text-center title">Noticias</h2>
             </div>
         </div>
-        @foreach( $arrayNoticias as $noticia )
-        @endforeach
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <select id="noticiasCategorias" class="form-control">
+                    @foreach( $arrayNoticias as $noticia )
+                        <option value="<?php echo $noticia->categoria;?>"><?php echo $noticia->categoria;?></option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-info" onclick="buscarNoticia()">Buscar</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div id="categoria" class="col-md-10">
+
+
+            </div>
+
+
+        </div>
+
+
     @endif
 @endsection

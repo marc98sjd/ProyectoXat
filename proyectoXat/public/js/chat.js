@@ -81,7 +81,7 @@ function abrirSala(sala, user, nameSala) {
                 console.log(data);
             }
         });
-    }, 2000);
+    }, 1000);
 
 }
 

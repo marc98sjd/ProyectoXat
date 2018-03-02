@@ -33,6 +33,7 @@ class CreateDenuncias extends Migration
             $table->string('descripcion');
             $table->string('imagen')->nullable();
             $table->string('comentario')->nullable();
+            $table->string('categoria');
             $table->integer('id_usuario')->unsigned();
             $table->foreign('id_usuario')->references('id')
             ->on('users')->onDelete('cascade');
