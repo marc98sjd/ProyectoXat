@@ -5,6 +5,7 @@ use Session;
 use Auth;
 use DB;
 use App\denuncias;
+use App\Noticias;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -69,6 +70,7 @@ class proyectoXatController extends Controller
         $db = new Noticias;
         $db -> titulo = $request -> input('titulo');
         $db -> descripcion = $request -> input('descripcion');
+        $db -> categoria = $request -> input('categoria');
         $db -> id_usuario = Auth::user()->id;
         $ruta = 'img/';
         $unique_name = md5($request->file('imagen'). time());

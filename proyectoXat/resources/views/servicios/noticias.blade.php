@@ -11,11 +11,22 @@
             {{ session()->get('message') }}
         </div>
     @endif
+    @if ((Auth::user()->is_admin)==1)
+        <form name="formNoticia" method="POST" action="{{ url('servicios/noticias/createNoticia') }}" enctype="multipart/form-data"  class="form-group">
+            {{ csrf_field() }}
+            <div name="substituir1"></div>
+        </form>
+        <script type="text/javascript">
+            crearNoticia();
+        </script>
+    @else
+        <div class="row">
+            <div class="col-md-12" style="padding: 40px;">
+                <h4 class="text-center">Sólo pueden crear notícias los administradores.</h4>
+            </div>
+        </div>
+    @endif
 
-    <div name="btnForm" class="row">
-    	<div class="col-md-5"></div>
-    	<button class="col-md-2 btn btn-info" onclick="crearNoticia()">Crear notícia</button>
-    </div>
 	@if($arrayNoticias->isEmpty())
         <div class="row">
             <div class="col-md-12" style="padding: 40px;">

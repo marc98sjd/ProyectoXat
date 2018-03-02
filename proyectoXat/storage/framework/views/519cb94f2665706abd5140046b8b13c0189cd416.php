@@ -26,6 +26,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group<?php echo e($errors->has('color') ? ' has-error' : ''); ?>">
+                            <label for="color" class="col-md-4 control-label">Color</label>
+
+                            <div class="col-md-6">
+                                <input id="color" type="color" class="form-control" name="color" value="<?php echo e(old('color')); ?>" required autofocus>
+
+                                <?php if($errors->has('color')): ?>
+                                    <span class="help-block">
+                                        <strong><?php echo e($errors->first('color')); ?></strong>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
                         <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                             <label for="email" class="col-md-4 control-label">Correo</label>
 

@@ -108,7 +108,7 @@ function crearNoticia(){
     var textAreaDesc = $("<textarea></textarea>").addClass("form-control").css("height","180px");
     textAreaDesc.attr({maxlength:"250",name:"descripcion"});
 
-    var divImagen = $("<div></div>").addClass("col-md-8");
+    var divImagen = $("<div></div>").addClass("col-md-4");
     var labelImagen = $("<label></label>").text("Imagen para añadir a la notícia:");
     var inputImagen = $("<input></input>").addClass("form-control");
     inputImagen.attr({type:"file",name:"imagen"});
@@ -118,10 +118,21 @@ function crearNoticia(){
     var inputFecha = $("<input></input>").addClass("form-control");
     inputFecha.attr({type:"date",name:"fecha"});
 
+    var divCategoria = $("<div></div>").addClass("col-md-4");
+    var labelCategoria = $("<label></label>").text("Categorías:");
+    var inputCategoria = $("<select name='categoria'></select>").addClass("form-control").append(
+                                $("<option value='Deportes'></option>").text("Deportes"),
+                                $("<option value='Informatica'></option>").text("Informatica"),
+                                $("<option value='Cultura'></option>").text("Cultura"),
+                                $("<option value='Arte y literatura'></option>").text("Arte y literatura"),
+                                $("<option value='Otros'></option>").text("Otros"),
+                                                            );
+
     divImagen.append(labelImagen,inputImagen);
     divFecha.append(labelFecha,inputFecha);
+    divCategoria.append(labelCategoria,inputCategoria);
 
-    divFormInner.append(labelTitulo,inputTitulo,espaciamiento,labelDesc,textAreaDesc,espaciamiento,espaciamiento,divImagen,divFecha);
+    divFormInner.append(labelTitulo,inputTitulo,espaciamiento,labelDesc,textAreaDesc,espaciamiento,espaciamiento,divImagen,divFecha,divCategoria);
     divFormOuter.append(divFormInner);
     divRowFormContent.append(divTitulo, divMargen, divFormOuter);
 
@@ -155,7 +166,7 @@ function buscarNoticia() {
                             $('<p></p>').text(data[key]["descripcion"])
                             ),
                         $('<div class="col-md-2"></div>').append(
-                                $('<img src="http://127.0.0.1:8000/'+data[key]["imagen"]+'" alt="Imagen no disponible!" style="height:200px">')
+                                $('<img src="http://127.0.0.1:8000/'+data[key]["imagen"]+'" alt="Imagen no disponible!" style="height:200px; width: 280px;">')
 
                     )));
             }
