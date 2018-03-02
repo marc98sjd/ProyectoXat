@@ -123,6 +123,11 @@
                     <a href="#">Noticias</a>
                 </div>
             </div>
+            <br>
+            <div class="row">
+                <div class="banner" style="background-color: red;"></div>
+            </div>
         </div>
+        
     </body>
 </html>

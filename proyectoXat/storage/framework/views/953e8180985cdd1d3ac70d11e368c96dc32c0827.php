@@ -13,6 +13,7 @@
     <!-- Estilos y links -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/hover.css')); ?>" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/app.css')); ?>">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
@@ -39,24 +40,14 @@
                 margin-bottom: 30px;
             }
         </style>
-    <!--<script type="text/javascript" src="<?php echo e(asset('js/jquery-3.2.1.js')); ?>"></script>-->
+    <script type="text/javascript" src="<?php echo e(asset('js/jquery-3.2.1.js')); ?>"></script>
 </head>
 <body style="background-color: #cefffd;">
-        <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="<?php echo e(asset('js/jquery.geocomplete.js')); ?>"></script>
     <script src="<?php echo e(asset('js/logger.js')); ?>"></script>
-    <script type="text/javascript">
-        
-
-        $(function(){
-        
-            $("#geocomplete").geocomplete({
-                map: "#mapa"
-            });
-        
-        });
-    </script>
+    <script src="<?php echo e(asset('js/misFunciones.js')); ?>"></script>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
