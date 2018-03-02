@@ -11,8 +11,7 @@ class CreateDenuncias extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('denuncias', function (Blueprint $table) {
             $table->increments('id');
 
@@ -27,6 +26,18 @@ class CreateDenuncias extends Migration
             
             $table->timestamps();   
         });
+
+        Schema::create('noticias', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('titulo');
+            $table->string('descripcion');
+            $table->string('imagen')->nullable();
+            $table->string('comentario')->nullable();
+            $table->integer('id_usuario')->unsigned();
+            $table->foreign('id_usuario')->references('id')
+            ->on('users')->onDelete('cascade');
+            $table->timestamps();          
+        });
     }
 
     /**
@@ -37,5 +48,6 @@ class CreateDenuncias extends Migration
     public function down()
     {
         Schema::dropIfExists('denuncias');
+        Schema::dropIfExists('noticias');
     }
 }
