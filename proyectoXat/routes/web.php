@@ -34,3 +34,7 @@ Route::get('servicios/noticias', 'proyectoXatController@getNoticias')->name('not
 Route::post('servicios/denuncias/addComment', 'proyectoXatController@update');
 
 Route::post('servicios/denuncias/createDenuncia', 'proyectoXatController@store');
+
+Route::post('servicios/noticias/createNoticia', 'proyectoXatController@storeNoticia');
+
+Route::get('servicios/xat/comprobarMensajes/{id}/{fecha}', 'xatController@comprobarMensajes');

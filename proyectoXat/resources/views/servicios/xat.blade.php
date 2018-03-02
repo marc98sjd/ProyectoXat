@@ -12,7 +12,13 @@
         </div>
         <div class="row">
             <div class="col-md-12" style="border-style: solid;border-color: greenyellow; height: 70px; border-radius: 15px; margin-bottom: 10px;">
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 id="tituloChat" style="text-align: center;margin-top: 10px;width: 100%; height: 100%; background-color: black;padding: 10px; color: white; opacity: 0.4; border-radius: 5px; cursor:pointer;">
+                            Chatea, informate, conoce gente en nuestro chat...
+                        </h3>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -26,7 +32,7 @@
                         <div class="text-center">
                             @foreach($salas as $sala)
                                 @foreach($usuarios as $usuario)
-                                <p onclick="abrirSala(<?php echo $sala->id.",".$usuario->id?>)" style="width: 100%; height: 100%; background-color: black;padding: 5px; font-size: 15px; color: white; opacity: 0.4; border-radius: 5px; cursor:pointer;"><?php echo $sala->titulo?></p>
+                                <p onclick="abrirSala(<?php echo $sala->id.",'".$usuario->name."','".$sala->titulo."'"?>)" style="width: 100%; height: 100%; background-color: black;padding: 5px; font-size: 15px; color: white; opacity: 0.4; border-radius: 5px; cursor:pointer;"><?php echo $sala->titulo?></p>
                                 @endforeach
                             @endforeach
                         </div>
@@ -47,12 +53,12 @@
             </div>
             <div class="col-md-8" style="border-style: solid;border-color: greenyellow; height: 50px;border-radius: 15px; width: 865px; margin-top: 10px;">
                 <div class="col-md-2">
-                    <button  type="submit" onclick="enviarMensajeSala()" class="btn btn-group col-md-12"  style="margin-top: 4px">
+                    <button  type="submit" onclick="enviarMensajeSala()" class="btn btn-primary col-md-12"  style="margin-top: 4px">
                         Enviar
                     </button>
                 </div>
                 <div class="col-md-10">
-                    <input id="newMensaje" name="mensaje" class="form-control" type="text" maxlength="150" style="margin-top: 4px">
+                    <input id="newMensaje" name="mensaje" class="form-control" type="text" maxlength="150" style="margin-top: 4px" disabled>
                 </div>
             </div>
 
