@@ -78,9 +78,9 @@ class xatController extends Controller
         $numbers = DB::select("SELECT count(id) cantidad FROM mensajes WHERE id_sala = '$id' and TIMEDIFF(now(), created_at) <= '01:00:00'");
         foreach ($numbers as $number) {
             if ($number->cantidad == 0) {
-                $dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion, m.created_at FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id' ORDER BY m.created_at DESC limit 20");
+                $dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion, m.created_at, u.color FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id' ORDER BY m.created_at DESC limit 20");
             } else {
-                $dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion, m.created_at FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id' and TIMEDIFF(now(), m.created_at) <= '01:00:00' ORDER BY m.created_at");
+                $dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion, m.created_at, u.color FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id' and TIMEDIFF(now(), m.created_at) <= '01:00:00' ORDER BY m.created_at");
 
             }
         }
@@ -150,7 +150,7 @@ class xatController extends Controller
         $numbers = DB::select("SELECT count(id) cantidad FROM mensajes WHERE id_sala = '$id' and TIMEDIFF(created_at, '$fecha') >= '00:00:01'");
         foreach ($numbers as $number) {
             if ($number->cantidad > 0) {
-                $dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion, m.created_at FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id' and TIMEDIFF(m.created_at, '$fecha') >= '00:00:01' ORDER BY m.created_at");
+                $dbquery = DB::select("SELECT m.id_sala, u.name, m.descripcion, m.created_at, u.color FROM mensajes m, users u WHERE u.id = m.id_usuario and id_sala = '$id' and TIMEDIFF(m.created_at, '$fecha') >= '00:00:01' ORDER BY m.created_at");
                 return json_encode($dbquery);
             }
         }
