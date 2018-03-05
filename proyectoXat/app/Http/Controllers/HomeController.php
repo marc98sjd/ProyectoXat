@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -24,5 +25,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function welcome()
+    {
+        if(Auth::guest())
+        {
+            return view('welcome');
+        }
+        else{
+            return view('home');
+        }
     }
 }
