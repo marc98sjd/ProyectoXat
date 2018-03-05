@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <?php $text ='hola mundo'?>
     <script type="text/javascript" src="http://localhost:8000/js/chat.js"></script>
     <div class="container">
         {{ Breadcrumbs::render('xat') }}

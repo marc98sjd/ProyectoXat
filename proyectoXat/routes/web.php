@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 })->name('root');
+Route::get('', function () {
+    return view('welcome');
+})->name('root');
 
 Auth::routes();
 
