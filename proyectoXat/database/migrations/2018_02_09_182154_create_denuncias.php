@@ -37,6 +37,8 @@ class CreateDenuncias extends Migration
             $table->integer('id_usuario')->unsigned();
             $table->foreign('id_usuario')->references('id')
             ->on('users')->onDelete('cascade');
+            $table->boolean('importante')->default(0);
+            $table->timestamp('fechaImportante')->nullable();
             $table->timestamps();          
         });
     }

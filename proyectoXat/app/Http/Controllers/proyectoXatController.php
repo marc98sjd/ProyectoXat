@@ -30,9 +30,21 @@ class proyectoXatController extends Controller
 	}
 
     public function getNoticias(){
+        
+        $notImportante = DB::select("SELECT count(id) cantidad FROM noticias WHERE TIMEDIFF(now(),fechaImportante) >= '168:00:00'");
+        foreach ($notImportante as $noticia) {
+            if ($noticia->cantidad > 0) {
+                $notImportanteId = DB::select("SELECT id FROM noticias WHERE TIMEDIFF(now(),fechaImportante) >= '168:00:00'");
+                foreach ($notImportanteId as $fuera){
+                    DB::update('update noticias set importante = 0 where id = ?', [$fuera->id]); 
+                }   
+            }   
+        }
 
-        $dbquery = DB::table('noticias')->orderBy('created_at', 'desc')->get();
-        return view('servicios.noticias',['arrayNoticias' => $dbquery]);
+        $queryImportant = DB::table('noticias')->where('importante', '=', 1)->orderBy('created_at', 'desc')->get();
+        $dbquery = DB::table('noticias')->where('importante', '=', 0)->orderBy('created_at', 'desc')->get();
+
+        return view('servicios.noticias',['arrayNoticias' => $dbquery,'noticiasImportantes' => $queryImportant]);
     }
 
 	public function getDebates(){
@@ -100,6 +112,14 @@ class proyectoXatController extends Controller
         DB::update('update noticias set comentario = ? where id = ?', [$comentario, $request->input('id')]);
 
         return redirect('servicios/noticias')->with('message', 'Comentario añadido correctamente!');
+    }
+
+    public function updateNoticiaImportant(Request $request)
+    {   
+
+        DB::update('update noticias set importante = 1 where id = ?', [$request->input('id')]);
+        DB::update('update noticias set fechaImportante = now() where id = ?', [$request->input('id')]);
+        return redirect('servicios/noticias')->with('message', 'Noticia actualizada correctamente!');
     }
     /**
      * Store a newly created resource in storage.

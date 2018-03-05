@@ -164,7 +164,7 @@ function buscarNoticia() {
                         $('<div class="col-md-8"></div>').append(
                             $('<h3></h3>').text(data[key]["titulo"]),
                             $('<p></p>').text(data[key]["descripcion"])
-                            ),
+                        ),
                         $('<div class="col-md-2"></div>').append(
                                 $('<img src="http://127.0.0.1:8000/'+data[key]["imagen"]+'" alt="Imagen no disponible!" style="height:200px; width: 280px;">')
 
