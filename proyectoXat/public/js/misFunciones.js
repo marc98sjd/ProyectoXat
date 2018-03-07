@@ -1,3 +1,17 @@
+/*
+
+    Nombre fichero: misFunciones.js
+    Creador: Marc Guerra
+    Fecha creación: 05/03/2018
+    Funcionalidad: Controlar todas las funcionalidades hechas en JS. 
+                   Efectos, geolocalización, creación de formulario y ajax
+
+*/
+/*
+ - Descripcion: con ésta función llamo a otras para los efectos
+ - Parametros: null
+ - Return: null
+ */
 $(function(){
     $(document).ready(function(){
         ocultar();
@@ -20,31 +34,56 @@ $(function(){
     });
 });
 
-/*$('button[name=btnRegistro]').click(aparecer);
-$('button[name=btnDesvanecer]').click(desvanecer);
-$('button[name=btnDeslizarMostrar]').click(mostrarDeslizando);
-$('button[name=btnDeslizarOcultar]').click(ocultarDeslizando);*/
-
+/*
+ - Descripcion: efecto de mostrar
+ - Parametros: elemento, evento, no opcional
+ - Return: null
+ */
 function mostrar(elemento){
     $(elemento).show();
 }
 
+/*
+ - Descripcion: efecto de ocultar
+ - Parametros: null
+ - Return: null
+ */
 function ocultar(){
     $("button[name=btnEnvio]").hide();
 }
 
+/*
+ - Descripcion: efecto de aparecer
+ - Parametros: elemento, evento, no opcional
+ - Return: null
+ */
 function aparecer(elemento){
     $(elemento).fadeToggle(1500);
 }
 
+/*
+ - Descripcion: efecto de mostrar deslizando
+ - Parametros: elemento, evento, no opcional
+ - Return: null
+ */
 function mostrarDeslizando(elemento){
     $(elemento).slideDown(1000);
 }
 
+/*
+ - Descripcion: efecto de ocultar deslizando
+ - Parametros: null
+ - Return: null
+ */
 function ocultarDeslizando(){
     $("p").slideUp(1000);
 }
 
+/*
+ - Descripcion: mapa google (not working)
+ - Parametros: null
+ - Return: null
+ */
 function mapaGoogle() {
     var latitud = latitud();
     var longitud = longitud();
@@ -58,6 +97,11 @@ function mapaGoogle() {
     var map = new google.maps.Map(document.getElementById("mapa"), mapOptions);
 }
 
+/*
+ - Descripcion: cogo la latitud del usuario si el navegador lo permite
+ - Parametros: null
+ - Return: lat
+ */
 function latitud(){
     var lat = "";
     if (navigator.geolocation) {
@@ -66,10 +110,20 @@ function latitud(){
     return lat;
 }
 
+/*
+ - Descripcion: devuelvo la latitud del usuario
+ - Parametros: posicion
+ - Return: latitud
+ */
 function devolverLatitud(position){
     return position.coords.latitude;
 }
 
+/*
+ - Descripcion: cogo la longitud
+ - Parametros: null
+ - Return: longitud
+ */
 function longitud(){
     var lon = "";
     if (navigator.geolocation) {
@@ -78,10 +132,20 @@ function longitud(){
     return lon;
 }
 
+/*
+ - Descripcion: devuelvo la longitud
+ - Parametros: posicion
+ - Return: longitud
+ */
 function devolverLongitud(position){
     return position.coords.longitude;
 }
 
+/*
+ - Descripcion: creo el formulario de crear noticia a través de jquery
+ - Parametros: null
+ - Return: null
+ */
 function crearNoticia(){
     var form = $('form[name=formNoticia]');
 
@@ -149,6 +213,11 @@ function crearNoticia(){
     form.append(divRowFormSubmit);
 }
 
+/*
+ - Descripcion: a través de ajax hago una petición a la bd para recibir las noticias de la categoria seleccionada
+ - Parametros: null
+ - Return: null
+ */
 function buscarNoticia() {
     $('#categoria').empty();
     var categoria = $('#noticiasCategorias option:selected').text();
