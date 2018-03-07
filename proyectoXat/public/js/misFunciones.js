@@ -154,7 +154,7 @@ function buscarNoticia() {
     var categoria = $('#noticiasCategorias option:selected').text();
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:8000/servicios/noticias/"+categoria,
+        url: "/servicios/noticias/"+categoria,
         dataType: "json",
         success: function (data) {
             for (var key in data) {
@@ -166,7 +166,7 @@ function buscarNoticia() {
                             $('<p></p>').text(data[key]["descripcion"])
                         ),
                         $('<div class="col-md-2"></div>').append(
-                                $('<img src="http://127.0.0.1:8000/'+data[key]["imagen"]+'" alt="Imagen no disponible!" style="height:200px; width: 280px;">')
+                                $('<img src="/'+data[key]["imagen"]+'" alt="Imagen no disponible!" style="height:200px; width: 280px;">')
 
                     )));
             }

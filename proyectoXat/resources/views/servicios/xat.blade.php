@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <script type="text/javascript" src="http://localhost:8000/js/chat.js"></script>
+    <script type="text/javascript" src="/js/chat.js"></script>
+    <?php header('Access-Control-Allow-Origin: *');?>
     <div class="container">
         {{ Breadcrumbs::render('xat') }}
         {{ csrf_field() }}
