@@ -2,7 +2,7 @@
 
     Nombre fichero: misFunciones.js
     Creador: Marc Guerra
-    Fecha creación: 05/03/2018
+    Fecha creación: 20/02/2018
     Funcionalidad: Controlar todas las funcionalidades hechas en JS. 
                    Efectos, geolocalización, creación de formulario y ajax
 
