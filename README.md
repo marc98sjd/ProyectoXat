@@ -2,6 +2,6 @@
 
 Aplicación pensada para todos aquellos ciudadanos de Cornella que quieran estar en contacto, publicar denuncias o notícias y hablar por chat.
 
-Site available at: marcge.site/ProyectoXat/proyectoXat/public/
+Site available at: http://www.proyectochat.tk/
 
 Developed by: Dani Gracia & Marc Guerra.
