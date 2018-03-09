@@ -4,4 +4,8 @@ Aplicación pensada para todos aquellos ciudadanos de Cornella que quieran estar
 
 Site available at: http://www.proyectochat.tk/
 
+Un usuari admin:
+admin@gmail.com
+admin123
+
 Developed by: Dani Gracia & Marc Guerra.
