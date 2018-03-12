@@ -19,6 +19,28 @@ class CreateSala extends Migration
             $table->string('imagen')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('partidas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('id_usu_1')->unsigned();
+            $table->foreign('id_usu_1')->references('id')
+                ->on('users')->onDelete('cascade');
+            $table->integer('id_usu_2')->unsigned();
+            $table->foreign('id_usu_2')->references('id')
+                ->on('users')->onDelete('cascade');
+            $table->string('winner')->nullable();
+        });
+
+        Schema::create('movimientos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('id_partida')->unsigned();
+            $table->foreign('id_partida')->references('id')
+                ->on('partidas')->onDelete('cascade');
+            $table->string('posicion');
+            $table->integer('id_usu')->unsigned();
+            $table->foreign('id_usu')->references('id')
+                ->on('users')->onDelete('cascade');
+        });
     }
 
     /**
