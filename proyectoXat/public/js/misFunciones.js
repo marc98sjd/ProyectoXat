@@ -211,6 +211,32 @@ function crearNoticia(){
 
     $('div[name=substituir1]').replaceWith(divRowFormContent);
     form.append(divRowFormSubmit);
+    setTimeout(notificar,1000);
+}
+
+function notificar(){
+    if (!("Notification" in window)) {
+        console.log("Tu navegador no soporta notificaciones!");
+    }
+    else if (Notification.permission === "granted") {
+        spawnNotification("Te ha llegado un mensaje!","ProyectoXat:","../img/66311ba4bc9f885f456fea87bcec406b.jpg");
+    }
+    else if (Notification.permission !== 'denied' || Notification.permission === "default") {
+        Notification.requestPermission(function (permission) {
+            if (permission === "granted") {
+                spawnNotification("Te ha llegado un mensaje!","ProyectoXat:");
+            }
+        })
+    }
+    
+}   
+
+function spawnNotification(theBody,theTitle,theIcon) {
+  var options = {
+      body: theBody,
+      icon: theIcon
+  }
+  var n = new Notification(theTitle,options);
 }
 
 /*
