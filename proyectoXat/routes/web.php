@@ -40,3 +40,4 @@ Route::post('servicios/noticias/updateNoticia', 'proyectoXatController@updateNot
 Route::get('servicios/noticias/{categoria}', 'proyectoXatController@getCat');
 
 Route::get('servicios/xat/comprobarMensajes/{id}/{fecha}', 'xatController@comprobarMensajes');
+Route::get('servicios/xat/comprobarUsuarios', 'xatController@comprobarUsuarios');

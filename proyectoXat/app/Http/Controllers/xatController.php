@@ -21,8 +21,10 @@ class xatController extends Controller
     {
         $salas = DB::table('sala')->get();
         $usuarios = DB::table('users')->where('id', Auth::user()->id)->get();
+        $nombres = DB::select("SELECT name FROM users where id!='".Auth::user()->id."'");
 
-        return view('servicios.xat',compact('salas','usuarios'));
+
+        return view('servicios.xat',compact('salas','usuarios', 'nombres'));
     }
 
     /**
@@ -154,5 +156,15 @@ class xatController extends Controller
                 return json_encode($dbquery);
             }
         }
+    }
+
+    public function comprobarUsuarios(){
+        $query = DB::select("SELECT name FROM users");
+        $response = array(
+            'status' => 'success',
+            'msg' => 'created successfully',
+            'value' => $query
+        );
+        return $response;
     }
 }
