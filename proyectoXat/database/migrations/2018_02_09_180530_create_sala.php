@@ -22,6 +22,9 @@ class CreateSala extends Migration
 
         Schema::create('partidas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_creador')->unsigned();
+            $table->foreign('id_creador')->references('id')
+                ->on('users')->onDelete('cascade');
             $table->integer('id_usu_1')->unsigned();
             $table->foreign('id_usu_1')->references('id')
                 ->on('users')->onDelete('cascade');

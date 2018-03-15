@@ -23,6 +23,22 @@ Route::get('servicios/debates', 'proyectoXatController@getDebates')->name('debat
 
 Route::resource('servicios/xat', 'xatController');
 
+Route::get('servicios/xat/comprobarInvitacion/{id}', 'xatController@compInvi');
+
+Route::get('servicios/xat/comprobarCreada/{id}', 'xatController@compCreada');
+
+Route::get('servicios/xat/cogerMovimientos/{idpartida}', 'xatController@getMov');
+
+Route::get('servicios/xat/comprobarTurno/{idpartida}', 'xatController@compTurno');
+
+Route::get('servicios/xat/primerMov/{idpartida}', 'xatController@primerMov');
+
+Route::get('servicios/xat/crearMovimiento/{pos}/{idpartida}', 'xatController@crearMov');
+
+Route::get('servicios/xat/victoria/{idpartida}', 'xatController@victoria');
+
+Route::get('servicios/xat/derrota/{idpartida}', 'xatController@derrota');
+
 Route::get('servicios/xat', 'xatController@index')->name('xat');
 
 Route::get('servicios/xat/crearMensaje/{id}/{mensaje}', 'xatController@crearMensaje');
@@ -40,4 +56,5 @@ Route::post('servicios/noticias/updateNoticia', 'proyectoXatController@updateNot
 Route::get('servicios/noticias/{categoria}', 'proyectoXatController@getCat');
 
 Route::get('servicios/xat/comprobarMensajes/{id}/{fecha}', 'xatController@comprobarMensajes');
-Route::get('servicios/xat/comprobarUsuarios', 'xatController@comprobarUsuarios');
+
+Route::get('servicios/xat/crearPartida/{id}', 'xatController@crearPartida');
