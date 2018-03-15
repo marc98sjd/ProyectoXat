@@ -3,7 +3,7 @@ var salaNow;//variable que guarda la sala en la que esta el usuario en ese momen
 var userName;//variable que guarda el nombre de usuario, se utiliza para enviar el mensaje al servidor
 var checkSala;//variable de intervalo, comprueba cada segundo si hay mensajes en la sala que aparece en salaNow en ese momento
 var lastTimeMessage;//variable que almacena el tiempo del ultimo mensaje recibido del servidor
-var firstTime = true;
+var firstTime = true; //variable que uso para utilizar una función solo la primera vez
 
 /*---------------------------------------------*
      * Mostrar mensajes en el chat
@@ -114,12 +114,12 @@ function checkPermiso(nameSala,autor,texto){
         console.log("Tu navegador no soporta notificaciones!");
     }
     else if (Notification.permission === "granted") {
-        crearNotification("Mensaje de "+autor" con el texto "+texto+"!","ProyectoXat sala: "+nameSala,"../img/logoChat.png");
+        crearNotification("Mensaje de "+autor+" con el texto "+texto+"!","ProyectoXat sala: "+nameSala+".","../img/logoChat.png");
     }
     else{
         Notification.requestPermission(function (permission) {
             if (permission === "granted") {
-                crearNotification("Mensaje de "+autor" con el texto "+texto+"!","ProyectoXat sala: "+nameSala,"../img/logoChat.png");
+                crearNotification("Mensaje de "+autor+" con el texto "+texto+"!","ProyectoXat sala: "+nameSala+".","../img/logoChat.png");
             }
         })
     }
