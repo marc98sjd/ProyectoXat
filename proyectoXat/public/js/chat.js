@@ -1,18 +1,41 @@
+/**
+ * Api para el chat
+ * @module chat
+ */
 
-var salaNow;//variable que guarda la sala en la que esta el usuario en ese momento, esta cambia al cambiar de sala
-var userName;//variable que guarda el nombre de usuario, se utiliza para enviar el mensaje al servidor
-var checkSala;//variable de intervalo, comprueba cada segundo si hay mensajes en la sala que aparece en salaNow en ese momento
-var lastTimeMessage;//variable que almacena el tiempo del ultimo mensaje recibido del servidor
-var firstTime = true; //variable que uso para utilizar una función solo la primera vez
+ /** 
+ * @type Integer
+ */
+var salaNow;
 
-/*---------------------------------------------*
-     * Mostrar mensajes en el chat
-           -Funcion para reutilizarla y no repetir codigo, esta crea los mensajes dentro del chat
-            esta solamente coge los datos recibidos por ajax desde el servidor para mostrarlos.
+/**
+ * @type String
+ */
+var userName;
 
-     ---------------------------------------------*/
+/**
+ * @type Function
+ */
+var checkSala;
+
+/**
+ * @type String
+ */
+var lastTimeMessage;
+
+/**
+ * @type Boolean
+ */
+var firstTime = true;
 
 
+/**
+ * Mostrar mensajes en el chat, cogiendo los datos del ajax y pintandolos.
+ * @module chat
+ * @submodule mostrarMensajes()
+ * @param {object} data Información de cada mensaje
+ * @param {string} nameSala El título de la sala actual
+ */
 function mostrarMensajes(data,nameSala) {
     var max = data.length;
     var antiguos = $('.foreignMsg').length; 
@@ -44,15 +67,14 @@ function mostrarMensajes(data,nameSala) {
     checkMensajeNuevo(nameSala,antiguos,nuevos,data[key]["name"],data[key]["descripcion"]);
 }
 
-
-/*---------------------------------------------*
-     * Recibir los mensajes de la sala desde la base de datos
-           -Esta funcion establece la conexion con la base de datos, y carga los mensaje correspondientes en cada sala(Segun especificaciones del proyecto)
-            y mantiene una conexion constante para comprobar si hay mensajes usando la variable de intervalo checkSala
-
-     ---------------------------------------------*/
-
-
+/**
+ * Recibir los mensajes de la sala a la que se ha entrado y comprobar cada segundo si hay mensajes nuevos
+ * @module chat
+ * @submodule abrirSala()
+ * @param {integer} sala El id de la sala a la que se ha entrado
+ * @param {integer} user El id del usuario que está entrando
+ * @param {string} nameSala El nombre de la sala que se está accediendo
+ */
 function abrirSala(sala, user, nameSala) {
     firstTime = true;
     $('#newMensaje').prop('disabled', false);
@@ -84,13 +106,11 @@ function abrirSala(sala, user, nameSala) {
 
 }
 
-/*---------------------------------------------*
-     * Enviar mensajes por ajax a la base de datos
-           -Esta funcion establece la conexion con la base de datos, y envia los datos necesarios para poder crear el mensaje.
-            La sala en la que esta escribiendo el usuario y el mensaje.
-
-     ---------------------------------------------*/
-
+/**
+ * Introduce el mensaje nuevo en la base de datos a través de ajax
+ * @module chat
+ * @submodule enviarMensajeSala()
+ */
 function enviarMensajeSala() {
     var mensaje = $('#newMensaje').val();
     $('#newMensaje').val("");
@@ -104,32 +124,67 @@ function enviarMensajeSala() {
     });
 }
 
+/**
+ * Compruebo si ha llegado un mensaje nuevo a la sala en la que se encuentra el usuario,
+ * y si ha llegado un mensaje nuevo llamo a la función checkPermiso()
+ * @module chat
+ * @submodule checkMensajeNuevo()
+ * @param {string} nameSala El nombre de la sala que se está accediendo
+ * @param {integer} antiguos El número de mensajes que hay en la sala antes de comprobar si hay mensajes nuevos
+ * @param {integer} nuevos El número de mensajes que hay en la sala después de comprobar si hay mensajes nuevos
+ * @param {string} autor El nombre del usuario que ha enviado el último mensaje
+ * @param {string} texto El contenido del mensaje
+ */
 function checkMensajeNuevo(nameSala,antiguos,nuevos,autor,texto){
     if (antiguos<nuevos) {
         checkPermiso(nameSala,autor,texto);
     }
 }
+
+/**
+ * Compruebo si tengo permiso para enviar notificaciones, si no se ha especificado aun, lo pido,
+ * y si obtengo permiso llamo a la función crearNotificacion()
+ * @module chat
+ * @submodule checkPermiso()
+ * @param {string} nameSala El nombre de la sala que se está accediendo
+ * @param {string} autor El nombre del usuario que ha enviado el último mensaje
+ * @param {string} texto El contenido del mensaje
+ */
 function checkPermiso(nameSala,autor,texto){
     if (!("Notification" in window)) {
-        console.log("Tu navegador no soporta notificaciones!");
+        alert("Tu navegador no soporta notificaciones!");
     }
     else if (Notification.permission === "granted") {
-        crearNotification("Mensaje de "+autor+" con el texto "+texto+"!","ProyectoXat sala: "+nameSala+".","../img/logoChat.png");
+        crearNotification(autor+" escribió: "+texto+"","ProyectoXat sala: "+nameSala,"../img/logoChat.png");
     }
     else{
         Notification.requestPermission(function (permission) {
             if (permission === "granted") {
-                crearNotification("Mensaje de "+autor+" con el texto "+texto+"!","ProyectoXat sala: "+nameSala+".","../img/logoChat.png");
+                crearNotification(autor+" escribió: "+texto+"","ProyectoXat sala: "+nameSala,"../img/logoChat.png");
             }
         })
     }
 }   
 
+/**
+ * Creo una notificación con los parámetros de entrada y un evento que cierra la notificación
+ * @module chat
+ * @submodule crearNotificacion()
+ * @param {string} theBody El cuerpo de la notifiación
+ * @param {string} theTitle El titulo de la notificación
+ * @param {string} theIcon URL al icono de la notificación
+ */
 function crearNotification(theBody,theTitle,theIcon) {
-  var options = {
-      body: theBody,
-      icon: theIcon
-  }
-  var n = new Notification(theTitle,options);
-  setTimeout(n.close.bind(n),5000);
+    var options = {
+        body: theBody,
+        icon: theIcon
+    }
+    var n = new Notification(theTitle,options);
+    /**
+         * Cierra la notificación 8 segundos después de aparecer
+         *
+         * @event cerrar
+         * @param {Object} n Objeto a cerrar tras 8 segundos
+    */
+    setTimeout(n.close.bind(n),8000);
 }
